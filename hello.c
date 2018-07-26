@@ -3,5 +3,5 @@
 int main()
 {
 	printf("hello jenkins\n");
-	retrun 0;
+	return 0;
 }
