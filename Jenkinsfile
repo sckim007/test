@@ -20,4 +20,11 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            mail to: 'sckim007@etri.re.kr',
+            subject: "Completed Pipeline: ${currentBuild.fullDisplayName}",
+            body: "Your build completed, please check: ${env.BUILD_URL}"
+        }
+    }
 }
