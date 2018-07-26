@@ -19,6 +19,11 @@ pipeline {
                 sh "gcc hello.c"
             }
         }
+        stage("Docker build") {
+            steps {
+                sh "docker build -t suncheul/hello-gcc-app ."
+            }
+        }
     }
     post {
         always {
