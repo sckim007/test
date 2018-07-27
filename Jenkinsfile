@@ -14,9 +14,14 @@ pipeline {
                 echo 'Step 2. Hello World'
             }
         }
-        stage("Compile") {
+        stage("Source Build") {
             steps {
-                sh "gcc hello.c"
+                sh "make"
+            }
+        }
+        stage("List") {
+            steps {
+                sh "ls"
             }
         }
         stage("Docker build") {
