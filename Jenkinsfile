@@ -29,6 +29,11 @@ pipeline {
                 sh "docker run suncheul/hello-gcc-app"
             }
         }
+        stage("Docker login") {
+            steps {
+                sh "docker login -u suncheul -p kscksc7315"
+            }
+        }
         stage("Docker push") {
             steps {
                 sh "docker push suncheul/hello-gcc-app"
