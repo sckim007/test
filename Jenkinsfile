@@ -29,6 +29,11 @@ pipeline {
                 sh "docker run suncheul/hello-gcc-app:latest"
             }
         }
+        stage("Docker push") {
+            steps {
+                sh "docker push suncheul/hello-gcc-app:latest"
+            }
+        }
     }
     post {
         always {
