@@ -1,13 +1,13 @@
 #include <stdio.h>
 
+#define LOOP_NUMBER 30
 int main()
 {
-	printf("hello jenkins\n");
-	printf("hello jenkins !\n");
-	printf("hello jenkins !!\n");
-	printf("hello jenkins !!!\n");
-	printf("hello jenkins !!!!\n");
-	printf("hello jenkins (add login stage)!!!!\n");
-	printf("hello jenkins (add push stage)!!!!\n");
+	int i = 0;
+	for (i=0;i<LOOP_NUMBER;i+)
+	{
+		print(">>>>>>>>> hello jenkins: %d th, left %d.\n", i, LOOP_NUMBER-1);
+	}
+
 	return 0;
 }
