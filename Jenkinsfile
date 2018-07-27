@@ -52,11 +52,6 @@ pipeline {
     }
     post {
         always {
-            echo 'docker stop suncheul/hello-gcc-app'
-            sh "docker stop suncheul/hello-gcc-app"
-        }
-        always {
-            echo 'Send mail to sckim007@etri.re.kr'
             mail to: 'sckim007@etri.re.kr',
             subject: "Completed Pipeline: ${currentBuild.fullDisplayName}",
             body: "Your build completed, please check: ${env.BUILD_URL}"
