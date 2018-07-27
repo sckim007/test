@@ -26,12 +26,12 @@ pipeline {
         }
         stage("Docker running") {
             steps {
-                sh "docker run suncheul/hello-gcc-app:latest"
+                sh "docker run suncheul/hello-gcc-app"
             }
         }
         stage("Docker push") {
             steps {
-                sh "docker push suncheul/hello-gcc-app:latest"
+                sh "docker push suncheul/hello-gcc-app"
             }
         }
     }
