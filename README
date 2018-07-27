@@ -1,2 +1,69 @@
-hello world !!!
-hello world !!!!
+
+<h2>host docker 설치</h2>
+<pre>
+# apt-get update
+# apt-get install -y docker-ce
+# apt-get install docker-compose
+</pre>
+
+<h2>jenkins docker image 생성</h2>
+System Requirement
+- Java 8
+- 256MB free memory
+- 1GB+ free disk space
+<pre>
+# docker pull jenkins
+# docker run -d -p 8080:8080 -v /jenkins:/var/jenkins_home --name jenkins -u root jenkins
+# docker ps
+# docker logs jenkins
+</pre>
+http://<host_ip>:8080 접속후 jenkins 플러그인 등 기타 설정
+
+<h2>jenkins docker-in-docker image 설정</h2>
+
+docker 접속
+<pre>
+docker exec -it -u root jenkins bash
+</pre>
+
+docker-ce 설치
+<pre>
+apt-get update && \
+apt-get -y install apt-transport-https \
+     ca-certificates \
+     curl \
+     gnupg2 \
+     software-properties-common && \
+curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg > /tmp/dkey; apt-key add /tmp/dkey && \
+add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") \
+   $(lsb_release -cs) \
+   stable" && \
+ apt-get update && \
+ apt-get -y install docker-ce
+</pre>
+
+<h2>새로운 docker image 생성</h2>
+
+실행 컨테이너로부터 이미지 생성
+<pre>
+# docker commit jenkins suncheul/jenkins:latest
+jenkins : 실행중인 컨테이너 이름
+suncheul/jenkins:latest : 생성할 이미지 이름
+</pre>
+
+docker hub로 push
+<pre>
+docker push suncheul/jenkins:latest
+</pre>
+
+<h2>새로운 docker image 실행</h2>
+새로운 docker 실행
+<pre>
+# docker run \
+  -d -p 8080:8080 \
+  -v /jenkins:/var/jenkins_home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  --name jenkins \
+  suncheul/jenkins:latest
+</pre>
