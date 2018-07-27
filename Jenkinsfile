@@ -26,7 +26,7 @@ pipeline {
         }
         stage("Unit Test") {
             steps {
-                sh "unit-test"
+                sh "./unit-test"
             }
         }
         stage("Docker Build") {
