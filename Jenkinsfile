@@ -36,7 +36,7 @@ pipeline {
         }
         stage("Docker Running") {
             steps {
-                sh "docker run suncheul/hello-gcc-app"
+                sh "docker run -d --name hello-gcc-app suncheul/hello-gcc-app"
             }
         }
         stage("Docker Login") {
