@@ -31,7 +31,7 @@ pipeline {
         }
         stage("Docker Build") {
             steps {
-                sh "docker build -t docker build -t hello-alpine ."
+                sh "docker build -t suncheul/hello-alpine ."
             }
         }
         stage("Docker Running") {
