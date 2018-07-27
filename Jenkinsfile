@@ -24,22 +24,27 @@ pipeline {
                 sh "ls"
             }
         }
-        stage("Docker build") {
+        stage("Unit Test") {
+            steps {
+                sh "unit-test"
+            }
+        }
+        stage("Docker Build") {
             steps {
                 sh "docker build -t suncheul/hello-gcc-app ."
             }
         }
-        stage("Docker running") {
+        stage("Docker Running") {
             steps {
                 sh "docker run suncheul/hello-gcc-app"
             }
         }
-        stage("Docker login") {
+        stage("Docker Login") {
             steps {
                 sh "docker login -u suncheul -p kscksc7315"
             }
         }
-        stage("Docker push") {
+        stage("Docker Push") {
             steps {
                 sh "docker push suncheul/hello-gcc-app"
             }
