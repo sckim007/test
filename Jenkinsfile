@@ -31,12 +31,12 @@ pipeline {
         }
         stage("Docker Build") {
             steps {
-                sh "docker build -t suncheul/hello-gcc-app ."
+                sh "docker build -t docker build -t hello-alpine ."
             }
         }
         stage("Docker Running") {
             steps {
-                sh "docker run -d --rm --name hello-gcc-app suncheul/hello-gcc-app"
+                sh "docker run -d --rm -p 1010:1010/udp --name hello-alpine hello-alpine"
             }
         }
         stage("Docker Login") {
@@ -46,7 +46,7 @@ pipeline {
         }
         stage("Docker Push") {
             steps {
-                sh "docker push suncheul/hello-gcc-app"
+                sh "docker push suncheul/hello-alpine"
             }
         }
     }
